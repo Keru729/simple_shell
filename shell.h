@@ -213,6 +213,9 @@ char **get_environ(info_t *);
 char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
+char **get_environ(info_t *info);
+int _unsetenv(info_t *info, char *var);
+int _setenv(info_t *info, char *var, char *value);
 
 /* toem_vars.c */
 int replace_alias(info_t *);
