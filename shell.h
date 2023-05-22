@@ -210,6 +210,9 @@ ssize_t get_input(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 char **get_environ(info_t *);
+char *_strncpy(char *dest, char *src, int n);
+char *_strncat(char *dest, char *src, int n);
+char *_strchr(char *s, char c);
 
 /* toem_vars.c */
 int replace_alias(info_t *);
