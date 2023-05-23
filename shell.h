@@ -11,7 +11,6 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <time.h>
 
 /* for write/read buffers */
 #define WRITE_BUF_SIZE 1024
@@ -104,7 +103,7 @@ int readfd;
 info_t;
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0, -1, 0, 1, -1, 0, NULL, NULL, NULL, NULL, {0}, -1, 0, 0}
+	0, 0, 0}
 
 /**
 * struct builtin - contains a builtin string and related function
