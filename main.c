@@ -9,20 +9,20 @@
 */
 int main(int ac, char **av)
 {
-	info_t info[] = { INFO_INIT };
+	info_t sa[] = { INFO_INIT };
 
 	if (ac == 2)
 	{
-		info->readfd = open_file(info, av[1], 0);
-		if (info->readfd == -1)
+		sa->readfd = open_file(sa, av[1], 0);
+		if (sa->readfd == -1)
 		{
-			free_info(info, 1);
-			exit(info->err_num);
+			free_info(sa, 1);
+			exit(sa->err_num);
 		}
 	}
-	populate_env_list(info);
-	read_history(info);
-	read_startup_file(info);
-	hsh(info, av);
+	populate_env_list(sa);
+	read_history(sa);
+	read_startup_file(sa);
+	hsh(sa, av);
 	return (EXIT_SUCCESS);
 }
