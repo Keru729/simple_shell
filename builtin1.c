@@ -88,8 +88,8 @@ int print_alias(list_t *node)
  */
 int _myalias(info_t *info)
 {
-	int p = 0;
-	char *i = NULL;
+	int i = 0;
+	char *p = NULL;
 	list_t *node = NULL;
 
 	if (info->argc == 1)
