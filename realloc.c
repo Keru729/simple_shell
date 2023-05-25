@@ -9,10 +9,10 @@
  */
 char *_memset(char *pma, char bf, unsigned int abf)
 {
-	unsigned int i;
+	unsigned int j;
 
-	for (i = 0; i < abf; i++)
-		pma[i] = bf;
+	for (j = 0; j < abf; j++)
+		pma[j] = bf;
 	return (pma);
 }
 
@@ -22,12 +22,13 @@ char *_memset(char *pma, char bf, unsigned int abf)
  */
 void ffree(char **ss)
 {
-char **b = ss;
-if (!ss)
-return;
-while (*ss)
-free(*ss++);
-free(b);
+	char **b = ss;
+
+	if (!ss)
+		return;
+	while (*ss)
+		free(*ss++);
+	free(b);
 }
 /**
  * _realloc - reallocates a block of memory
@@ -39,19 +40,20 @@ free(b);
  */
 void *_realloc(void *ppmb, unsigned int spb, unsigned int snb)
 {
-char *k;
-if (!ppmb)
-return (malloc(snb));
-if (!snb)
-return (free(ppmb), NULL);
-if (snb == spb)
-return (ppmb);
-k = malloc(snb);
-if (!k)
-return (NULL);
-snb = spb < snb ? spb : snb;
-while (spb--)
-k[spb] = ((char *)ppmb)[spb];
-free(ppmb);
-return (k);
+	char *k;
+
+	if (!ppmb)
+		return (malloc(snb));
+	if (!snb)
+		return (free(ppmb), NULL);
+	if (snb == spb)
+		return (ppmb);
+	k = malloc(snb);
+	if (!k)
+		return (NULL);
+	snb = spb < snb ? spb : snb;
+	while (spb--)
+		k[spb] = ((char *)ppmb)[spb];
+	free(ppmb);
+	return (k);
 }
