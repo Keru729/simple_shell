@@ -1,8 +1,11 @@
 #include "shell.h"
 
 /**
+ * HEAD
  * get_history_file - gets the history file
  * @info: parameter struct
+ * *get_history_file - gets the history file
+ * @ps: parameter struc
  *
  * Return: allocated string containg history file
  */
