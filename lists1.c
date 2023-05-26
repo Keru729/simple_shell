@@ -2,17 +2,17 @@
 
 /**
  * list_len - determines length of linked list
- * @hd: pointer to first node
+ * @h: pointer to first node
  *
- * return: size of list
+ * Return: size of list
  */
-size_t list_len(const list_t *hd)
+size_t list_len(const list_t *h)
 {
 	size_t i = 0;
 
-	while (hd)
+	while (h)
 	{
-		hd = hd->next;
+		h = h->next;
 		i++;
 	}
 	return (i);
@@ -20,59 +20,59 @@ size_t list_len(const list_t *hd)
 
 /**
  * list_to_strings - returns an array of strings of the list->str
- * @hd: pointer to first node
+ * @head: pointer to first node
  *
- * return: array of strings
+ * Return: array of strings
  */
-char **list_to_strings(list_t *hd)
+char **list_to_strings(list_t *head)
 {
-	list_t *nd = hd;
-	size_t i = list_len(hd), j;
-	char **sts;
+	list_t *node = head;
+	size_t i = list_len(head), j;
+	char **strs;
 	char *str;
 
-	if (!hd || !i)
+	if (!head || !i)
 		return (NULL);
-	sts = malloc(sizeof(char *) * (i + 1));
-	if (!sts)
+	strs = malloc(sizeof(char *) * (i + 1));
+	if (!strs)
 		return (NULL);
-	for (i = 0; nd; nd = nd->next, i++)
+	for (i = 0; node; node = node->next, i++)
 	{
-		str = malloc(_strlen(nd->str) + 1);
+		str = malloc(_strlen(node->str) + 1);
 		if (!str)
 		{
 			for (j = 0; j < i; j++)
-				free(sts[j]);
-			free(sts);
+				free(strs[j]);
+			free(strs);
 			return (NULL);
 		}
 
-		str = _strcpy(str, nd->str);
-		sts[i] = str;
+		str = _strcpy(str, node->str);
+		strs[i] = str;
 	}
-	sts[i] = NULL;
-	return (sts);
+	strs[i] = NULL;
+	return (strs);
 }
 
 
 /**
  * print_list - prints all elements of a list_t linked list
- * @hd: pointer to first node
+ * @h: pointer to first node
  *
- * return: size of list
+ * Return: size of list
  */
-size_t print_list(const list_t *hd)
+size_t print_list(const list_t *h)
 {
 	size_t i = 0;
 
-	while (hd)
+	while (h)
 	{
-		_puts(convert_number(hd->num, 10, 0));
+		_puts(convert_number(h->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(hd->str ? hd->str : "(nil)");
+		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
-		hd = hd->next;
+		h = h->next;
 		i++;
 	}
 	return (i);
@@ -80,42 +80,42 @@ size_t print_list(const list_t *hd)
 
 /**
  * node_starts_with - returns node whose string starts with prefix
- * @nd: pointer to list head
- * @sm: string to match
- * @ncsm: the next character after prefix to match
+ * @node: pointer to list head
+ * @prefix: string to match
+ * @c: the next character after prefix to match
  *
- * return: match node or null
+ * Return: match node or null
  */
-list_t *node_starts_with(list_t *nd, char *sm, char ncsm)
+list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
-	char *k = NULL;
+	char *p = NULL;
 
-	while (nd)
+	while (node)
 	{
-		k = starts_with(nd->str, sm);
-		if (k && ((ncsm == -1) || (*k == ncsm)))
-			return (nd);
-		nd = nd->next;
+		p = starts_with(node->str, prefix);
+		if (p && ((c == -1) || (*p == c)))
+			return (node);
+		node = node->next;
 	}
 	return (NULL);
 }
 
 /**
  * get_node_index - gets the index of a node
- * @hd: pointer to list head
- * @nd: pointer to the node
+ * @head: pointer to list head
+ * @node: pointer to the node
  *
- * return: index of node or -1
+ * Return: index of node or -1
  */
-ssize_t get_node_index(list_t *hd, list_t *nd)
+ssize_t get_node_index(list_t *head, list_t *node)
 {
 	size_t i = 0;
 
-	while (hd)
+	while (head)
 	{
-		if (hd == nd)
+		if (head == node)
 			return (i);
-		hd = hd->next;
+		head = head->next;
 		i++;
 	}
 	return (-1);

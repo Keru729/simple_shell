@@ -1,71 +1,75 @@
 #include "shell.h"
 
 /**
-* _strlen:  return the length of a strings
-* @st: the strings whose length to check
-*
-* return: integer length of strings
-*/
-int _strlen(char *st)
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
+ *
+ * Return: integer length of string
+ */
+int _strlen(char *s)
 {
-int i = 0;
-if (!st)
-return (0);
-while (*st++)
-i++;
-return (i);
+	int i = 0;
+
+	if (!s)
+		return (0);
+
+	while (*s++)
+		i++;
+	return (i);
 }
 
 /**
-* _strcmp - performs comparison of two strangs.
-* @st1: the second strang
-* @st2: the first strang
-*
-* return: negative if st1 < st2, positive if st1 > st2, zero if st1 == st2
-*/
-int _strcmp(char *st1, char *st2)
-{
-while (*st1 && *st2)
-{
-if (*st1 != *st2)
-return (*st1 - *st2);
-st1++;
-st2++;
-}
-if (*st1 == *st2)
-return (0);
-else
-return (*st1 < *st2 ? -1 : 1);
-}
-/**
- *  starts_with - checks if sbf starts with ss
- *  @ss: string to search
- *  @sbf: the substring to find
+ * _strcmp - performs lexicogarphic comparison of two strangs.
+ * @s1: the first strang
+ * @s2: the second strang
  *
- *  return: address of next char of ss or NULL
+ * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-char *starts_with(const char *ss, const char *sbf)
+int _strcmp(char *s1, char *s2)
 {
-while (*ss)
-if (*sbf++ != *ss++)
-	return (NULL);
-return ((char *)ss);
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+		return (0);
+	else
+		return (*s1 < *s2 ? -1 : 1);
+}
+
+/**
+ * starts_with - checks if needle starts with haystack
+ * @haystack: string to search
+ * @needle: the substring to find
+ *
+ * Return: address of next char of haystack or NULL
+ */
+char *starts_with(const char *haystack, const char *needle)
+{
+	while (*needle)
+		if (*needle++ != *haystack++)
+			return (NULL);
+	return ((char *)haystack);
 }
 
 /**
  * _strcat - concatenates two strings
- * @dsf: the destination buffer
- * @srf: the source buffer
+ * @dest: the destination buffer
+ * @src: the source buffer
  *
- * return: pointer to destination buffer
-*/
-char *_strcat(char *dsf, char *srf)
+ * Return: pointer to destination buffer
+ */
+char *_strcat(char *dest, char *src)
 {
-char *ret = dsf;
-while (*dsf)
-dsf++;
-while (*srf)
-*dsf++ = *srf++;
-*dsf = *srf;
-return (ret);
+	char *ret = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+	return (ret);
 }

@@ -1,17 +1,18 @@
 #include "shell.h"
+
 /**
-* bfree - frees a pointer and NULLs the address
-* @aptr: address of the pointer to free
-**
-return: 1 if freed, else 0.
-*/
-int bfree(void **aptr)
+ * bfree - frees a pointer and NULLs the address
+ * @ptr: address of the pointer to free
+ *
+ * Return: 1 if freed, otherwise 0.
+ */
+int bfree(void **ptr)
 {
-if (aptr && *aptr)
-{
-free(*aptr);
-*aptr = NULL;
-return (1);
-}
-return (0);
+	if (ptr && *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+		return (1);
+	}
+	return (0);
 }
