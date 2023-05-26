@@ -143,6 +143,7 @@ void _puts(char *);
 int _putchar(char);
 
 /* toem_exits.c */
+void _eputs(char *);
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
